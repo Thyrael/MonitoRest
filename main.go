@@ -1,12 +1,20 @@
 package main
 
 import (
-  _ "embed"
-  "github.com/wailsapp/wails"
+	_ "embed"
+	"my-project/models"
+	"my-project/repository"
+
+	"github.com/wailsapp/wails"
 )
 
-func basic() string {
-  return "World!"
+
+func save(data string) {
+  _ = repository.SaveAll(data)
+}
+
+func read() models.Root {
+  return repository.ReadAll()
 }
 
 //go:embed frontend/build/static/js/main.js
@@ -25,6 +33,11 @@ func main() {
     CSS:    css,
     Colour: "#131313",
   })
-  app.Bind(basic)
+
+  _ = repository.IsFileExist()
+
+  app.Bind(save)
+  app.Bind(read)
   app.Run()
+
 }

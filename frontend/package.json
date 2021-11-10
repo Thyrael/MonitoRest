@@ -4,12 +4,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@wailsapp/runtime": "^1.0.10",
+    "antd": "^4.16.13",
     "core-js": "^3.6.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "wails-react-scripts": "3.0.1-2",
     "react-modal": "3.11.2",
-    "@wailsapp/runtime": "^1.0.10"
+    "wails-react-scripts": "3.0.1-2"
   },
   "scripts": {
     "serve": "react-scripts start",
