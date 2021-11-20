@@ -8,6 +8,8 @@ const AddEndpoint = ({ newEndpoint, labels, editEndpoint = null }) => {
 
 	const { Option } = Select;
 
+	const httpAvailableResponseCodes = ["200", "203", "404"];
+
 	if (!endpoint.hasOwnProperty("id")) {
 		setEndpoint((obj) => ({
 			...obj,
@@ -24,7 +26,7 @@ const AddEndpoint = ({ newEndpoint, labels, editEndpoint = null }) => {
 		modalCancel();
 	};
 
-	const handleChange = (e) => {
+	const handleUrlChange = (e) => {
 		e.persist();
 		setEndpoint((obj) => ({ ...obj, url: e.target.value }));
 	};
@@ -43,6 +45,7 @@ const AddEndpoint = ({ newEndpoint, labels, editEndpoint = null }) => {
 					type="primary"
 					icon={<PlusOutlined />}
 					onClick={() => setIsModalVisible(true)}
+					style={{ margin: "5px 0" }}
 				/>
 			)}
 			<Modal
@@ -55,7 +58,7 @@ const AddEndpoint = ({ newEndpoint, labels, editEndpoint = null }) => {
 				<Input
 					value={endpoint.url}
 					type="text"
-					onChange={(e) => handleChange(e)}
+					onChange={(e) => handleUrlChange(e)}
 				/>
 				<p>Method </p>
 				<Select
@@ -81,6 +84,25 @@ const AddEndpoint = ({ newEndpoint, labels, editEndpoint = null }) => {
 					{labels.map((label) => (
 						<Option key={label} value={label}>
 							{label}
+						</Option>
+					))}
+				</Select>
+				<p>Expected http response </p>
+				<Select
+					showSearch
+					style={{ width: 200 }}
+					value={endpoint?.expected?.status_code}
+					placeholder="Http Response code"
+					onChange={(value) =>
+						setEndpoint((obj) => ({ ...obj, expected: { status_code: value } }))
+					}
+				>
+					{httpAvailableResponseCodes.map((httpAvailableResponseCode) => (
+						<Option
+							key={httpAvailableResponseCode}
+							value={httpAvailableResponseCode}
+						>
+							{httpAvailableResponseCode}
 						</Option>
 					))}
 				</Select>

@@ -10,12 +10,6 @@ const Config = ({ data }) => {
 	const [labels, setLabels] = useState(data.labels);
 	const [endpoints, setEndpoints] = useState(data.endpoints);
 
-	const discardChange = () => {
-		setDebounceTime(data.debounce_time);
-		setLabels(data.labels);
-		setEndpoints(data.endpoints);
-	};
-
 	const saveChange = () => {
 		window.backend.save(
 			JSON.stringify({
@@ -41,11 +35,9 @@ const Config = ({ data }) => {
 				labels={labels}
 				setEndpoints={(values) => setEndpoints(values)}
 			/>
+
 			<Button type="primary" onClick={saveChange}>
 				Save
-			</Button>
-			<Button danger onClick={discardChange}>
-				Discard
 			</Button>
 		</div>
 	);

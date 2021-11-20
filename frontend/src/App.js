@@ -5,7 +5,6 @@ import Content from "./components/Content";
 function App() {
 	const [root, setRoot] = useState({});
 
-	console.log(root);
 	useEffect(() => {
 		window.backend.read().then((data) => setRoot(data));
 	}, []);

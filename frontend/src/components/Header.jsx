@@ -1,10 +1,11 @@
 import React from "react";
+import logo from "../img.png";
 
 const Header = () => {
 	return (
 		<div style={{ width: "100%" }}>
 			<img
-				src="./img.png"
+				src={logo}
 				alt="logo"
 				height={100}
 				style={{

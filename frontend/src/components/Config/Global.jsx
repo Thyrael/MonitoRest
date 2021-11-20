@@ -15,25 +15,43 @@ const Global = ({ debounceTime, labels, setDebounceTime, setLabels }) => {
 	}, [labelsValues, setLabels]);
 
 	return (
-		<>
+		<div>
 			<h3>Global configuration</h3>
-			<p>Debounce time (ms) </p>
-			<input
-				value={debounceValue}
-				onChange={(e) => setDebounceValue(e.target.value)}
-			/>
-			<p>Labels</p>
-			{labelsValues.map((label) => (
-				<Tag key={label} color="blue">
-					{label}
-				</Tag>
-			))}
-			<AddLabel
-				newLabel={(label) =>
-					setLabelsValues((labelsValues) => [...labelsValues, label])
-				}
-			/>
-		</>
+			<section
+				style={{
+					padding: "15px 0",
+				}}
+			>
+				<span>Debounce time (ms) </span>
+				<input
+					value={debounceValue}
+					onChange={(e) => setDebounceValue(e.target.value)}
+				/>
+			</section>
+			<section
+				style={{
+					padding: "15px 0",
+				}}
+			>
+				<span
+					style={{
+						padding: "0px 10px 0 0",
+					}}
+				>
+					Labels
+				</span>
+				{labelsValues.map((label) => (
+					<Tag key={label} color="blue">
+						{label}
+					</Tag>
+				))}
+				<AddLabel
+					newLabel={(label) =>
+						setLabelsValues((labelsValues) => [...labelsValues, label])
+					}
+				/>
+			</section>
+		</div>
 	);
 };
 
